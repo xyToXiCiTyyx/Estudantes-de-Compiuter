@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <time.h>
+
+int calcularIdade(int anoNascimento) {
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    int anoAtual = tm.tm_year + 1900;
+    return anoAtual - anoNascimento;
+}
+
+int main() {
+    int anoNascimento = 2004;
+    int idade = calcularIdade(anoNascimento);
+    printf("Sua idade é %d anos.\n", idade);
+    return 0;
+}
