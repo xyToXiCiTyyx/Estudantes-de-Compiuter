@@ -1,0 +1,50 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Livro{
+    char titulo[50];
+    char autor[20];
+    char editora[20];
+    int publicacao;
+} Livro;
+
+void ordenar(Livro livro[], int n){
+    Livro temp;
+    for (int i=0;i<n-1;i++){
+        for (int j=0;j<n-i-1;j++){
+            if(livro[j].publicacao > livro[j+1].publicacao){
+                temp = livro[j];
+                livro[j] = livro[j+1];
+                livro[j+1]=temp;
+            }
+        }
+    }
+}
+
+int main() {
+    struct Livro livro[4];
+    int i;
+    for (i=0;i<4;i++){
+        printf("Nome do %dº livro:\n",i+1);
+        fgets(livro[i].titulo, 50, stdin);
+    
+        //printf("Nome do autor:\n");
+        //fgets(livro[i].autor, 20, stdin);
+    
+        //printf("Nome da editora:\n");
+        //fgets(livro[i].editora, 20, stdin);
+    
+        printf("Ano em que foi publicado:\n");
+        scanf("%d",&livro[i].publicacao);
+        getchar();
+    }
+    
+    ordenar(livro, 4);
+    
+    printf("Livros em ordem:\n");
+    for (int i=0;i<4;i++){
+        printf("%s, %d\n", livro[i].titulo, livro[i].publicacao);
+    }
+
+    return 0;
+}
