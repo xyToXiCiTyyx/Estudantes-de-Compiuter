@@ -1,0 +1,31 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Livro{
+    char titulo[50];
+    char autor[20];
+    char editora[20];
+    int publicacao;
+};
+
+
+int main() {
+    struct Livro livro;
+    
+    printf("Informe sobre o livro:\n");
+    printf("Nome:\n");
+    scanf("%s",livro.titulo);
+    
+    printf("Nome do autor:\n");
+    scanf("%s",livro.autor);
+    
+    printf("Nome da editora:\n");
+    scanf("%s",livro.editora);
+    
+    printf("Ano em que foi publicado:\n");
+    scanf("%d",&livro.publicacao);
+    
+    printf("%s\n%s\n%s\n%d\n",livro.titulo,livro.autor,livro.editora,livro.publicacao);
+
+    return 0;
+}

@@ -1,0 +1,53 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Aluno{
+    float nota[3];
+}Aluno;
+
+float calculaMedia(Aluno aluno, int n){
+    float media=0;
+    for (int i=0;i<n;i++){
+        media+=aluno.nota[i];
+    }
+    return media/3;
+}
+
+int maiorMedia(Aluno aluno[], int n){
+    float mediaMaior;
+    int numMediaMaior = -1;
+    
+    for (int i=0;i<n;i++){
+        float media = calculaMedia(aluno[i], n);
+        if (media>mediaMaior){
+            media=mediaMaior;
+            numMediaMaior = i;
+        }
+    }
+    return numMediaMaior;
+}
+
+
+int main() {
+    int n;
+    
+    printf("Informe a quantidade de alunos:\n");
+    scanf("%d",&n);
+    
+    struct Aluno aluno[n];
+    
+    for (int i=0;i<n;i++){
+        printf("Notas Aluno %d: ",i+1);
+        scanf("%f %f %f",&aluno[i].nota[0],&aluno[i].nota[1],&aluno[i].nota[2]);
+    }
+
+    for (int i=0;i<n;i++){
+        float media = calculaMedia(aluno[i],n);
+        printf("A media das notas do aluno %d é %.2f.\n", i+1, media);
+    }
+    
+    int indice = maiorMedia(aluno,n);
+    printf("O aluno com a maior média é o %d.\n",indice+1);
+
+    return 0;
+}

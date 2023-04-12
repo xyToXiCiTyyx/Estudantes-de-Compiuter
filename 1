@@ -1,0 +1,40 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+typedef struct Aluno{
+    char nome[50];
+    int idade;
+    char endereco[50];
+    float nota1;
+    float nota2;
+    float nota3;
+};
+
+int calculaMedia(float nota1, float nota2, float nota3){
+    float soma, media;
+    soma=nota1+nota2+nota3;
+    media=soma/3;
+    
+    return media;
+}
+
+int main() {
+    struct Aluno aluno;
+    float nota;
+    printf("Informe o nome:\n");
+    scanf("%s",&aluno.nome);
+    
+    printf("Idade:\n");
+    scanf("%d",&aluno.idade);
+    
+    printf("Endereço:\n");
+    scanf("%s",&aluno.endereco);
+    
+    printf("Notas de 3 disciplinas:\n");
+    scanf("%f %f %f",&aluno.nota1,&aluno.nota2,&aluno.nota3);
+
+    nota = calculaMedia(aluno.nota1,aluno.nota2,aluno.nota3);
+    printf("Media Final: %2.f",nota);
+
+    return 0;
+}
