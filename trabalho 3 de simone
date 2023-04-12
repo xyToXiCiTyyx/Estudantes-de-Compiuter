@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char nome[50];
+    int idade;
+    char genero[10];
+    char profissao[50];
+} Pessoa;
+
+void encontrarHomensMaisVelhos(Pessoa pessoas[], int num_pessoas) {
+    printf("Pessoas do sexo masculino com mais de 30 anos:\n");
+
+    for (int i = 0; i < num_pessoas; i++) {
+        Pessoa pessoa = pessoas[i];
+
+        if (strcmp(pessoa.genero, "Masculino") == 0 && pessoa.idade > 30) {
+            printf("- Nome: %s\n", pessoa.nome);
+            printf("  Idade: %d anos\n", pessoa.idade);
+            printf("  Profissão: %s\n\n", pessoa.profissao);
+        }
+    }
+}
+
+int main() {
+    int num_pessoas;
+
+    printf("Quantas pessoas você quer cadastrar? ");
+    scanf("%d", &num_pessoas);
+
+    Pessoa pessoas[num_pessoas];
+
+    for (int i = 0; i < num_pessoas; i++) {
+        printf("Pessoa %d:\n", i + 1);
+
+        printf("  Nome: ");
+        scanf("%s", pessoas[i].nome);
+
+        printf("  Idade: ");
+        scanf("%d", &pessoas[i].idade);
+
+        printf("  Gênero: ");
+        scanf("%s", pessoas[i].genero);
+
+        printf("  Profissão: ");
+        scanf("%s", pessoas[i].profissao);
+
+        printf("\n");
+    }
+
+    encontrarHomensMaisVelhos(pessoas, num_pessoas);
+
+    return 0;
+}
