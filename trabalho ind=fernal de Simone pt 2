@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+
+// Definição da estrutura Livro
+struct Livro {
+    char titulo[100];
+    char autor[50];
+    char editora[50];
+    int anoPublicacao;
+};
+
+// Função para ordenar os livros em ordem crescente pelo ano de publicação
+void ordenarLivros(struct Livro livros[], int tamanho) {
+    int i, j;
+    struct Livro temp;
+
+    for (i = 0; i < tamanho - 1; i++) {
+        for (j = i + 1; j < tamanho; j++) {
+            if (livros[i].anoPublicacao > livros[j].anoPublicacao) {
+                // Troca os livros de lugar
+                temp = livros[i];
+                livros[i] = livros[j];
+                livros[j] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    // Exemplo de uso
+    struct Livro livros[3];
+
+    // Preenche informações dos livros
+    strcpy(livros[0].titulo, "O Senhor dos Anéis");
+    strcpy(livros[0].autor, "J.R.R. Tolkien");
+    strcpy(livros[0].editora, "Martins Fontes");
+    livros[0].anoPublicacao = 1954;
+
+    strcpy(livros[1].titulo, "1984");
+    strcpy(livros[1].autor, "George Orwell");
+    strcpy(livros[1].editora, "Companhia das Letras");
+    livros[1].anoPublicacao = 1949;
+
+    strcpy(livros[2].titulo, "A Guerra dos Tronos");
+    strcpy(livros[2].autor, "George R.R. Martin");
+    strcpy(livros[2].editora, "LeYa");
+    livros[2].anoPublicacao = 1996;
+
+    int tamanho = 3;
+    ordenarLivros(livros, tamanho);
+
+    printf("Livros ordenados pelo ano de publicação:\n");
+
+    // Imprime informações dos livros ordenados
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d - %s, de %s, publicado por %s\n",
+               livros[i].anoPublicacao, livros[i].titulo, livros[i].autor,
+               livros[i].editora);
+    }
+
+    return 0;
+}
