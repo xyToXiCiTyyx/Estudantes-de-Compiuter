@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char nome[50];
+    int idade;
+    char endereco[100];
+    float notas[3];
+} Aluno;
+
+void calculaMedia(Aluno alunos[], int n) {
+    for(int i = 0; i < n; i++) {
+        float media = (alunos[i].notas[0] + alunos[i].notas[1] + alunos[i].notas[2]) / 3.0;
+        printf("aluno %s - media: %.2f\n", alunos[i].nome , media);
+    }
+}
+
+int main() {
+    int num_alunos;
+
+    printf("Quantos alunos serao cadastrados? ");
+    scanf("%d", &num_alunos);
+
+    Aluno alunos[num_alunos];
+
+    for (int i = 0; i < num_alunos; i++) {
+        printf("Qual o nome do %do aluno? ", i+1);
+        scanf("%s", alunos[i].nome);
+
+        printf("Qual a idade do %do aluno? ", i+1);
+        scanf("%d", &alunos[i].idade);
+        
+        printf("Quais foram as notas do aluno %s? ", alunos[i].nome);
+        scanf("%f %f %f", &alunos[i].notas[0], &alunos[i].notas[1], &alunos[i].notas[2]);
+    }
+    
+    printf("Lista de alunos cadastrados:\n");
+    for (int i = 0; i < num_alunos; i++) {
+        printf("%d. %s, %d anos\n", i+1, alunos[i].nome, alunos[i].idade);
+    }
+    
+    calculaMedia(alunos, num_alunos);
+    
+    return 0;
+}
