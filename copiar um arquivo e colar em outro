@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE* arquivo_origem;
+    FILE* arquivo_destino;
+    char nome_arquivo_origem[100];
+    char nome_arquivo_destino[100];
+    char caracter;
+
+    printf("Digite o nome do arquivo de origem: ");
+    scanf("%s", nome_arquivo_origem);
+
+    printf("Digite o nome do arquivo de destino: ");
+    scanf("%s", nome_arquivo_destino);
+
+    arquivo_origem = fopen(nome_arquivo_origem, "r");
+    if (arquivo_origem == NULL) {
+        printf("Erro ao abrir o arquivo de origem\n");
+        exit(1);
+    }
+
+    arquivo_destino = fopen(nome_arquivo_destino, "w");
+    if (arquivo_destino == NULL) {
+        printf("Erro ao abrir o arquivo de destino\n");
+        exit(1);
+    }
+
+    caracter = fgetc(arquivo_origem);
+    while (caracter != EOF) {
+        fputc(caracter, arquivo_destino);
+        caracter = fgetc(arquivo_origem);
+    }
+
+    printf("Conteúdo do arquivo %s copiado para %s\n", nome_arquivo_origem, nome_arquivo_destino);
+
+    fclose(arquivo_origem);
+    fclose(arquivo_destino);
+
+    return 0;
+}
