@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+    time_t now;
+    struct tm *tm_info;
+    char buffer[26];
+    
+    time(&now);
+    tm_info = localtime(&now);
+    
+    strftime(buffer, 26, "%Y-%m-%d %H:%M:%S", tm_info);
+    
+    printf("Data e Hora Atuais: %s", buffer);
+    
+    return 0;
+}
