@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <time.h>
+
+int main()
+{
+    // Obter a data e hora atuais do sistema
+    time_t now = time(NULL);
+
+    // Converter para uma estrutura tm com os valores separados
+    struct tm *local = localtime(&now);
+
+    // Exibir a data e hora formatadas
+    printf("Data atual: %02d/%02d/%d\n", local->tm_mday, local->tm_mon + 1, local->tm_year + 1900);
+    printf("Hora atual: %02d:%02d:%02d\n", local->tm_hour, local->tm_min, local->tm_sec);
+
+    return 0;
+}
