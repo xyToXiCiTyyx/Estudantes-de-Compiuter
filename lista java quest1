@@ -1,0 +1,36 @@
+class Main {
+  public static class Animal{
+    public String nome;
+    public int idade;
+    public Animal (String nome,int idade){
+      this.nome=nome;
+      this.idade=idade;
+    }
+    
+  }
+   
+  
+  public  class Cachorro extends Animal{
+     String raca;
+    public Cachorro(String nome,int idade,String raca){
+      super(nome, idade);
+      this.raca=raca;
+    }
+    
+  }
+  public  class Gato extends Animal{
+      String corPelo;
+    public Gato(String nome,int idade,String corPelo){
+      super(nome, idade);
+      this.corPelo=corPelo;
+    }
+   
+  }
+  public  class Passaro extends Animal{
+     String tipoBico;
+    public Passaro(String nome,int idade,String tipoBico){
+      super(nome,idade);
+      this.tipoBico=tipoBico;
+    }
+    
+  }
