@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char filename[100];
+    char c;
+    char nome[50];
+    int count = 0;
+
+    printf("qual nome deseja procurar?\n ");
+    scanf("%s", nome);
+    printf("Entre com o nome do arquivo: \n");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "r");
+
+    if (fp == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    while (fscanf(fp, "%s", nome) != EOF) {
+        count++;
+    }
+
+    printf("O arquivo %s contém %dx seu nome.\n", filename, count);
+
+    fclose(fp);
+
+    return 0;
+}
