@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include "funcoes.h"
+
+//funcoes.h
+struct Lista {
+  int numeros[50];
+  int tamanho;
+};
+
+int maiorValor(struct Lista lista) {
+  int maior = lista.numeros[0];
+  for (int i = 1; i < lista.tamanho; i++) {
+    if (lista.numeros[i] > maior) {
+      maior = lista.numeros[i];
+    }
+  }
+  return maior;
+}
+//fim do funcoes.h
+
+
+
+int main() {
+  struct Lista lista = {{5,10,15,20,25,30,35}, 7};
+  int maiorNumero = maiorValor(lista);
+  printf("O maior número na lista é: %d\n", maiorNumero);
+  return 0;
+}
